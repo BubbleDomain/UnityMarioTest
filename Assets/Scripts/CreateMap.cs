@@ -37,7 +37,7 @@ public class CreateMap : MonoBehaviour
     private void InitBlock()
     {
         // 地面一层砖
-        for (float i = -20; i < 30; i++ )
+        for (float i = -20; i < 100; i++ )
         {
             blockVectors.Add(new Vector3(i, GROUND, BACKGROUD));
         }

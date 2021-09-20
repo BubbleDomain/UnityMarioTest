@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class controller : MonoBehaviour
+public class Controller : MonoBehaviour
 {
     private const float DEFAULT_SPEED = 3f;
     private const float ACCELERATE_SPEED = 0.6f;
@@ -28,10 +28,6 @@ public class controller : MonoBehaviour
 
     // 角色状态
     private bool isHanging = false;
-    private bool isHoldingLeft = false;
-    private bool isHoldingRight = false;
-
-    private float jumpTime = 0;
 
     void Start()
     {
@@ -114,6 +110,5 @@ public class controller : MonoBehaviour
         }
 
         return xSpeed * Time.deltaTime;
-       
     }
 }
