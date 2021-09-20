@@ -11,15 +11,16 @@ public class Controller : MonoBehaviour
 
     private Transform camera_transform;
 
-
     private Transform m_transform;
     private CharacterController m_controller;
 
     private Vector3 offset;
 
     // 角色移动速度
-    private float xSpeed = 0;
+    public float xSpeed = 0;
     private float ySpeed = 0;
+    public bool isLeftHold = false;
+    public bool isRightHold = false;
 
     // 重力
     private float gravityDec = 0.2f;
@@ -89,13 +90,21 @@ public class Controller : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
+            isLeftHold = true;
             xSpeed -= ACCELERATE_SPEED;
             if (xSpeed < -MAX_SPEED) xSpeed = -MAX_SPEED;
+        } else
+        {
+            isLeftHold = false;
         }
         if (Input.GetKey(KeyCode.D))
         {
+            isRightHold = true;
             xSpeed += ACCELERATE_SPEED;
             if (xSpeed > MAX_SPEED) xSpeed = MAX_SPEED;
+        } else
+        {
+            isRightHold = false;
         }
         
         // 摩擦力计算
