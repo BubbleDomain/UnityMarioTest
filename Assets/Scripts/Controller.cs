@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour
     private const float DEFAULT_SPEED = 3f;
     private const float ACCELERATE_SPEED = 0.6f;
     private const float MAX_SPEED = 7f;
-    private const float DEFAULT_JUMP_SPEED = 6f;
+    private const float DEFAULT_JUMP_SPEED = 12f;
 
     private Transform camera_transform;
 
@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     public bool isRightHold = false;
 
     // 重力
-    private float gravityDec = 0.2f;
+    private float gravityDec = 0.3f;
     // 摩擦力
     private float frictionDec = 0.1f;
 
@@ -59,6 +59,11 @@ public class Controller : MonoBehaviour
         } else
         {
             isHanging = true;
+        }
+
+        if (flags.HasFlag(CollisionFlags.Above))
+        {
+            if (ySpeed > 0) ySpeed = 0;
         }
     }
 
@@ -119,5 +124,38 @@ public class Controller : MonoBehaviour
         }
 
         return xSpeed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject o = other.gameObject;
+        if (o.tag == "Enemy_Head")
+        {
+            Vector3 size = gameObject.GetComponent<Renderer>().bounds.size;
+            Vector3 position = transform.position;
+            Vector3 closestPoint = other.ClosestPoint(position);
+            if (closestPoint.y * 3 <= position.y * 3 - size.y)
+            {
+                Destroy(o);
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+        }
+
+        //if (collision.gameObject.name != "mario") return;
+
+        //if (collision.impulse.x != 0)
+        //{
+        //    Time.timeScale = 0;
+        //    // 游戏结束
+        //}
+
+        //if (collision.impulse.y < 0)
+        //{
+        //    // 怪物死亡
+        //    Destroy(gameObject);
+        //}
     }
 }

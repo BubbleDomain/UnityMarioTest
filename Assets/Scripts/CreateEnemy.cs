@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CreateEnemy : MonoBehaviour
 {
-    private const float FIRST_ENEMY_TRIGGER = 10f;
-    private const float FIRST_ENEMY_DIRECTION = 25f;
+    private const float FIRST_ENEMY_TRIGGER = 2f;
+    private const float FIRST_ENEMY_DIRECTION = 22f;
     bool isInitFirstEnemy = false;
 
     private const float GROUND = -0.5f;

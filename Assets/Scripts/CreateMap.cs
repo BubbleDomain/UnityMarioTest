@@ -7,6 +7,8 @@ public class CreateMap : MonoBehaviour
     private const float GROUND = -1.5f;
     private const float BACKGROUD = 1f;
 
+    private const float LINE1 = 2f;
+
     ArrayList blockVectors = new ArrayList();
     ArrayList blocks = new ArrayList();
 
@@ -40,6 +42,11 @@ public class CreateMap : MonoBehaviour
         for (float i = -20; i < 100; i++ )
         {
             blockVectors.Add(new Vector3(i, GROUND, BACKGROUD));
+        }
+
+        for (float i = 13; i < 16; i++)
+        {
+            blockVectors.Add(new Vector3(i, LINE1, BACKGROUD));
         }
     }
 }
